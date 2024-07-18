@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import NavBar from './NavBar';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -18,6 +19,7 @@ const ProductList = () => {
 
     return (
         <div>
+            <div className=""><NavBar /></div>
             <h1>Product List</h1>
             <ul>
                 {products.map(product => (
