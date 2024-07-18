@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DD_Footware.props" />
+</Project>
