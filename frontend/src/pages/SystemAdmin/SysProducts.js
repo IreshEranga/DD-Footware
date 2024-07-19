@@ -161,13 +161,27 @@ const SysProducts = () => {
   const handleUpdateFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/products/${selectedProduct.productID}`, updatedProduct);
+      await axios.put(`http://localhost:5000/api/products/${selectedProduct.productID}`, {
+        productID: selectedProduct.productID, // Ensure productID is included
+        name: updatedProduct.name,
+        stockLevel: updatedProduct.stockLevel,
+        price: updatedProduct.price
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       fetchProducts();
       setIsUpdateFormOpen(false);
     } catch (error) {
-      console.error('Error updating product:', error);
+      if (error.response) {
+        console.error('Error updating product:', error.response.data);
+      } else {
+        console.error('Error updating product:', error.message);
+      }
     }
   };
+  
   
 
   const handleUpdateFormChange = (e) => {

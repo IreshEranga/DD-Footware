@@ -40,9 +40,15 @@ namespace DD_Footware.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(int id, Product product)
         {
+            // Log the received product for debugging
+            Console.WriteLine($"Received product ID: {product.ProductID}");
+            Console.WriteLine($"Received product name: {product.Name}");
+            Console.WriteLine($"Received product stockLevel: {product.StockLevel}");
+            Console.WriteLine($"Received product price: {product.Price}");
+
             if (id != product.ProductID)
             {
-                return BadRequest();
+                return BadRequest("Product ID mismatch");
             }
 
             _context.Entry(product).State = EntityState.Modified;
@@ -65,6 +71,8 @@ namespace DD_Footware.Controllers
 
             return NoContent();
         }
+
+
         // DELETE api/product/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
