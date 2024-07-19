@@ -137,3 +137,7 @@
 .main-content.shifted {
   margin-left: 0;
 }
+
+.container-shifted {
+  margin-left: 260px; 
+}
