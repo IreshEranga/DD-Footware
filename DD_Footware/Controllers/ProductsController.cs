@@ -18,6 +18,16 @@ namespace DD_Footware.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Product>> AddProduct(Product product)
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetProduct), new { id = product.ProductID }, product);
+        }
+
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
