@@ -36,5 +36,21 @@ namespace DD_Footware.Controllers
 
             return product;
         }
+
+        [HttpPost("{id}/setImage")]
+        public async Task<IActionResult> SetProductImage(int id, [FromBody] string imageUrl)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.ImageURL = imageUrl;
+            _context.Entry(product).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
