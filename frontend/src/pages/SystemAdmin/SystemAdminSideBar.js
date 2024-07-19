@@ -24,7 +24,7 @@
 //     <>
 //       <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
 //         <div className="toggle-button" onClick={toggleSidebar}>
-//           {isOpen ? <IoClose /> : <FiMenu />}
+//           {isOpen ? <FiMenu /> : <IoClose />}
 //         </div>
 //         <div className="sidebar-content">
 //           <div className="menu-item" onClick={() => navigate('/systemadmin/products')}>
@@ -38,11 +38,17 @@
 //           <BiSolidLogOut /> Logout
 //         </div>
 //       </div>
+//       <div className={`main-content ${isOpen ? 'shifted' : ''}`}>
+//         {/* Other dashboard content */}
+//         <h1>System Admin Dashboard</h1>
+//         <p>Welcome to the System Admin Dashboard. Here you can manage products and outlets.</p>
+//       </div>
 //     </>
 //   );
 // };
 
 // export default SystemAdminSideBar;
+
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -68,7 +74,7 @@ const SystemAdminSideBar = () => {
     <>
       <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
         <div className="toggle-button" onClick={toggleSidebar}>
-          {isOpen ? <FiMenu /> : <IoClose />}
+          {isOpen ? <IoClose /> : <FiMenu />}
         </div>
         <div className="sidebar-content">
           <div className="menu-item" onClick={() => navigate('/systemadmin/products')}>
@@ -81,11 +87,6 @@ const SystemAdminSideBar = () => {
         <div className="menu-item logout" onClick={handleLogout}>
           <BiSolidLogOut /> Logout
         </div>
-      </div>
-      <div className={`main-content ${isOpen ? 'shifted' : ''}`}>
-        {/* Other dashboard content */}
-        <h1>System Admin Dashboard</h1>
-        <p>Welcome to the System Admin Dashboard. Here you can manage products and outlets.</p>
       </div>
     </>
   );

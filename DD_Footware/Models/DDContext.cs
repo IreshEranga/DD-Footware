@@ -20,7 +20,6 @@ namespace DD_Footware.Models
         public string Name { get; set; }
         public int StockLevel { get; set; }
         public decimal Price { get; set; }
-        public string ImageURL { get; set; }
     }
 
     public class Order
