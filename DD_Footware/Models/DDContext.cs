@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace DD_Footware.Models
 {
@@ -26,9 +27,15 @@ namespace DD_Footware.Models
     {
         public int OrderID { get; set; }
         public int ProductID { get; set; }
-        public int Quantity { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
+        public string Address { get; set; }
+        public string ProductName { get; set; }
+        public decimal Price { get; set; }
         public string Status { get; set; }
     }
+
 
     public class Outlet
     {
