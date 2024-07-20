@@ -6,10 +6,9 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import { ToastContainer } from 'react-toastify';
 import SystemAdminHome from "../pages/SystemAdmin/SystemAdminHome";
-import OutletAdminHome from "../pages/OutletAdmin/OutletAdminHome";
 import SysProducts from "../pages/SystemAdmin/SysProducts";
 import OrderList from "../pages/SystemAdmin/OrderList";
-
+import OutletAdminHome from "../pages/OutletAdmin/OutletAdminHome";
 
 
 const AppRoutes = () => {
@@ -24,9 +23,10 @@ const AppRoutes = () => {
             {/* <Route path="/order" element={<OrderList />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/systemadmin" element={<SystemAdminHome />} />
-            <Route path="/outletadmin" element={<OutletAdminHome />} />
+            
             <Route path="/systemadmin/products" element={<SysProducts />} />
             <Route path="/systemadmin/orders" element={<OrderList />} /> 
+            <Route path="/outletAdmin" element={<OutletAdminHome />} /> 
             
           </Routes>
         </Router>

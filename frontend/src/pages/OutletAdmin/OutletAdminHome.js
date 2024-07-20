@@ -1,8 +1,14 @@
 import React from 'react'
+import OutletAdminNavBar from '../../components/OutletAdminNavBar'
+
 
 const OutletAdminHome = () => {
   return (
-    <div>OutletAdminHome</div>
+    <div>
+    <OutletAdminNavBar/>
+
+    
+    </div>
   )
 }
 
