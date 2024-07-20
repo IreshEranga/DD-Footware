@@ -39,14 +39,75 @@ namespace DD_Footware.Controllers
             return order;
         }
 
-        // PUT: api/Orders/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(int id, Order order)
+        // PUT: api/Orders/5/approve
+        [HttpPut("{id}/approve")]
+        public async Task<IActionResult> ApproveOrder(int id)
         {
-            if (id != order.OrderID)
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
             {
-                return BadRequest();
+                return NotFound();
             }
+
+            // Check if the order is already approved or rejected
+            if (order.Status != "Pending")
+            {
+                return BadRequest("Order has already been processed.");
+            }
+
+            // Update the order status
+            order.Status = "Approved";
+
+            // Update the product stock
+            var product = await _context.Products.FindAsync(order.ProductID);
+            if (product == null)
+            {
+                return NotFound("Product not found.");
+            }
+
+            // Assuming 'Quantity' is the amount of product ordered (needs to be added to Order model)
+            product.StockLevel -= 1; // Update stock level as needed
+
+            _context.Entry(order).State = EntityState.Modified;
+            _context.Entry(product).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!OrderExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/Orders/5/reject
+        [HttpPut("{id}/reject")]
+        public async Task<IActionResult> RejectOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the order is already approved or rejected
+            if (order.Status != "Pending")
+            {
+                return BadRequest("Order has already been processed.");
+            }
+
+            // Update the order status
+            order.Status = "Rejected";
 
             _context.Entry(order).State = EntityState.Modified;
 

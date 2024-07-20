@@ -83,6 +83,9 @@ const SystemAdminSideBar = () => {
           <div className="menu-item" onClick={() => navigate('/systemadmin/outlets')}>
             Outlets
           </div>
+          <div className="menu-item" onClick={() => navigate('/systemadmin/orders')}>
+            Orders
+          </div>
         </div>
         <div className="menu-item logout" onClick={handleLogout}>
           <BiSolidLogOut /> Logout
