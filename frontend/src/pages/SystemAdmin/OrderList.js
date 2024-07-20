@@ -58,7 +58,7 @@ const OrderList = () => {
     );
 
     return (
-        <Container>
+        <Container style={{marginLeft:'250px'}}>
             <h1>Orders</h1>
             <SystemAdminSideBar/>
             <Form.Control
