@@ -1,18 +1,27 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace DD_Footware.Models
 {
     public class DDContext : DbContext
     {
-        public DDContext(DbContextOptions<DDContext> options) : base(options)
-        {
-        }
+        public DDContext(DbContextOptions<DDContext> options) : base(options) { }
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Outlet> Outlets { get; set; }
         public DbSet<OutletStock> OutletStocks { get; set; }
+    }
+
+    public class User
+    {
+        public int UserID { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
+        public string Outlet { get; set; }
     }
 
     public class Product
@@ -35,7 +44,6 @@ namespace DD_Footware.Models
         public decimal Price { get; set; }
         public string Status { get; set; }
     }
-
 
     public class Outlet
     {

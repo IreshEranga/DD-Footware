@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast notifications
+import 'react-toastify/dist/ReactToastify.css';
 import '../Login/Login.css';
 import NavBar from '../../components/NavBar';
 
@@ -10,33 +10,34 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Update the URL if your backend is running on a different port or domain
-      const response = await axios.post('http://localhost:5000/login', {
+      const response = await axios.post('http://localhost:5000/api/user/login', {
         email,
         password
       });
 
-      const { token, role } = response.data;
-      localStorage.setItem('token', token); // Store token in local storage
+      const { name, role, outlet } = response.data;
+
+      // Store user details in local storage
+      localStorage.setItem('user', JSON.stringify({ name, email, role, outlet }));
 
       // Navigate based on user role
       if (role === 'system admin') {
-        navigate('/systemadmin'); // Update with your system admin route
+        navigate('/systemadmin/products');
       } else if (role === 'outlet admin') {
-        navigate('/outletadmin'); // Update with your outlet admin route
+        navigate('/outletadmin');
       } else {
-        toast.error('Access denied'); // Show toast message
+        toast.error('Access denied');
       }
 
     } catch (err) {
       setError('Invalid email or password');
-      toast.error('Invalid email or password'); // Show toast message
+      toast.error('Invalid email or password');
     }
   };
 
