@@ -1,8 +1,7 @@
-using DD_Footware.Models;
 using Microsoft.EntityFrameworkCore;
+using DD_Footware.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 // Add services to the container.
 builder.Services.AddDbContext<DDContext>(options =>
@@ -33,12 +32,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("AllowAllOrigins");
 app.UseAuthorization();
+
 app.MapControllers();
 app.UseRouting();
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
 
 app.Run();
