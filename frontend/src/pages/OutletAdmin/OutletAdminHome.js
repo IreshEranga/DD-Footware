@@ -138,7 +138,7 @@ const OutletAdminHome = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Outlet ID</th>
+              {/* <th>Outlet ID</th> */}
               <th>Product ID</th>
               <th>Stock Level</th>
             </tr>
@@ -147,7 +147,7 @@ const OutletAdminHome = () => {
             {outletStocks.map(stock => (
               <tr key={stock.outletStockID}>
                 <td>{stock.outletStockID}</td>
-                <td>{stock.outletID}</td>
+                {/* <td>{stock.outletID}</td> */}
                 <td>{stock.productID}</td>
                 <td>{stock.stockLevel}</td>
               </tr>
