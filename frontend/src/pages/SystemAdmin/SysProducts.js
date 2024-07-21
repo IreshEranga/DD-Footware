@@ -9,7 +9,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
-
+import './SysForm.css';
 
 
 const SysProducts = () => {
@@ -259,9 +259,9 @@ const handleAddFormSubmit = async (e) => {
       )}
 
       {isAddFormOpen && (
-        <div className="add-form-overlay" style={{marginLeft:'200px', border:'1px solid black', width:'60%', padding:'20px',marginBottom:'50px', backgroundColor:'gray'}}>
+        <div className="add-form-overlay">
           <div className="add-form-container">
-            
+          <IoIosCloseCircle className="close-button" onClick={handleCloseAddForm} />
             <center><h2>Add Product</h2></center>
             <form onSubmit={handleAddFormSubmit} >
               <div className="form-group">
@@ -297,10 +297,9 @@ const handleAddFormSubmit = async (e) => {
                   onChange={handleAddFormChange}
                 />
               </div>
-              <div className="form-group d-flex justify-content-between">
-                <button type="submit" className="btn btn-success" style={{width:'100px', marginLeft:'600px'}}>Add</button>
-                <button type="button" className="btn btn-dark" style={{width:'100px'}} onClick={handleCloseAddForm}>Close</button>
-              </div>
+              <button type="submit" className="btn btn-success">
+                Add
+              </button>
             </form>
           </div>
         </div>
