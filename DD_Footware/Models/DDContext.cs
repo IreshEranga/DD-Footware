@@ -21,6 +21,7 @@ namespace DD_Footware.Models
         public string Password { get; set; }
         public string Role { get; set; }
         public string Outlet { get; set; }
+        public int OutletID { get; set; }
     }
 
     public class Product

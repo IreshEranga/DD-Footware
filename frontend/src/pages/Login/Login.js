@@ -21,10 +21,10 @@ const Login = () => {
         password
       });
 
-      const { name, role, outlet } = response.data;
+      const { name, role, outlet, outletID } = response.data;
 
       // Store user details in local storage
-      localStorage.setItem('user', JSON.stringify({ name, email, role, outlet }));
+      localStorage.setItem('user', JSON.stringify({ name, email, role, outlet, outletID }));
 
       // Navigate based on user role
       if (role === 'system admin') {

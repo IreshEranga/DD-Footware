@@ -35,7 +35,7 @@ namespace DD_Footware.Controllers
             _logger.LogInformation("Successful login for email: {Email}", request.Email); // Log successful login
 
             // Return user details instead of token
-            return Ok(new { user.Name, user.Email, user.Role, user.Outlet });
+            return Ok(new { user.Name, user.Email, user.Role, user.Outlet, user.OutletID });
         }
     }
 
