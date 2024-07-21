@@ -6,11 +6,21 @@ const OutletAdminHome = () => {
   const [outletStocks, setOutletStocks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchOutletStocks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/OutletStock');
+        // Retrieve user details from local storage
+        const user = JSON.parse(localStorage.getItem('user'));
+        setUser(user);
+
+        if (!user) {
+          throw new Error('User not found in local storage');
+        }
+
+        // Fetch outlet stocks based on user details
+        const response = await axios.get(`http://localhost:5000/api/OutletStock`);
         setOutletStocks(response.data);
         setLoading(false);
       } catch (error) {
@@ -35,6 +45,12 @@ const OutletAdminHome = () => {
       <OutletAdminNavBar />
       <div className="container">
         <h2>Outlet Stock</h2>
+        {user && (
+          <div>
+            <h3>Welcome, {user.name}</h3>
+            <p>Outlet: {user.outlet}</p>
+          </div>
+        )}
         <table className="table table-striped">
           <thead>
             <tr>
