@@ -218,7 +218,7 @@ const handleAddFormSubmit = async (e) => {
             <h2>Update Product</h2>
             <form onSubmit={handleUpdateFormSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name" style={{color:'black'}}>Name</label>
                 <input
                   type="text"
                   className="form-control"
@@ -229,7 +229,7 @@ const handleAddFormSubmit = async (e) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="stockLevel">Stock Level</label>
+                <label htmlFor="stockLevel" style={{color:'black'}}>Stock Level</label>
                 <input
                   type="number"
                   className="form-control"
@@ -240,7 +240,7 @@ const handleAddFormSubmit = async (e) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price" style={{color:'black'}}>Price</label>
                 <input
                   type="number"
                   className="form-control"
@@ -265,7 +265,7 @@ const handleAddFormSubmit = async (e) => {
             <center><h2>Add Product</h2></center>
             <form onSubmit={handleAddFormSubmit} >
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name" style={{color:'black'}}>Name</label>
                 <input
                   type="text"
                   className="form-control"
@@ -276,7 +276,7 @@ const handleAddFormSubmit = async (e) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="stockLevel">Stock Level</label>
+                <label htmlFor="stockLevel" style={{color:'black'}}>Stock Level</label>
                 <input
                   type="number"
                   className="form-control"
@@ -287,7 +287,7 @@ const handleAddFormSubmit = async (e) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price" style={{color:'black'}}>Price</label>
                 <input
                   type="number"
                   className="form-control"
